@@ -1,0 +1,24 @@
+{% extends 'main_template.html' %}
+{% block content %}
+
+<form action="{{ url_for('save_stock') }}" method="POST">
+    <button type="submit" class="mt-4 mb-4 me-2 btn btn-primary btn-salvar">Adicionar</button>
+    <a class="btn btn-danger" href="{{ url_for('index') }}">Voltar</a>
+    <fieldset>
+        <div class="mt-4 mb-4">
+            <label class="h3 fw-bolder" for="ticker">Ticker</label>
+            <input autofocus required type="text" id="ticker" name="ticker" class="fw-bolder form-control form-control-lg text-uppercase">
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="mt-4 mb-4">
+            <label class="h3 fw-bolder">Country: </label>
+            <select name="country" class="fw-bolder form-select form-select-lg">
+                <option value="BR" class="h4 fw-bolder">BR</option>
+                <option value="EUA" class="h4 fw-bolder">EUA</option>
+            </select>
+        </div>
+    </fieldset>
+</form>
+
+{% endblock %}
