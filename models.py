@@ -1,5 +1,5 @@
 class Stock:
-    def __init__(self, ticker, country, price='Loading...'):
+    def __init__(self, ticker, country, price='get_price'):
         self._ticker = ticker
         self._country = country
         self._price = price
