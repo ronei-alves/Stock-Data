@@ -63,7 +63,7 @@ def update_stock():
     return redirect(url_for('index'))
 
 
-@app.route('/remove_stock/<int:stock_id>', methods=['POST', ])
+@app.route('/remove_stock/<int:stock_id>')
 def remove_stock(stock_id):
     # =================================================================================
     stock_index = stock_id - 1
@@ -72,7 +72,7 @@ def remove_stock(stock_id):
     return redirect(url_for('index'))
 
 
-@app.route('/get_price/<int:stock_id>', methods=['GET', 'POST'])
+@app.route('/get_price/<int:stock_id>')
 def get_price(stock_id):
     stock = stocks[stock_id - 1]
     price = str(yf.Ticker(stock.ticker).info['regularMarketPrice'])
