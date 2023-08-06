@@ -75,7 +75,15 @@ def remove_stock(stock_id):
 @app.route('/get_price/<int:stock_id>')
 def get_price(stock_id):
     stock = stocks[stock_id - 1]
-    price = str(yf.Ticker(stock.ticker).info['regularMarketPrice'])
+
+    ticker_info = yf.Ticker(stock.ticker).info
+
+    if 'currentPrice' in ticker_info:
+        price = str(ticker_info['currentPrice'])
+    elif 'navPrice' in ticker_info:
+        price = str(ticker_info['navPrice'])
+    else:
+        price = 0
 
     if stock.country == 'EUA':
         locale.setlocale(locale.LC_MONETARY, 'en_US.UTF-8')
